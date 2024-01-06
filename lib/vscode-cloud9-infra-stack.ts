@@ -4,7 +4,7 @@ import { IpAddresses, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2'
 import { type Construct } from 'constructs'
 
 export class VscodeCloud9InfraStack extends Stack {
-  constructor (scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
     const vpc = new Vpc(this, 'vpc', {
       ipAddresses: IpAddresses.cidr('10.0.0.0/27'),

@@ -14,6 +14,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-new": "off"
+    "no-new": "off",
+    "space-before-function-paren": "off",
+    "@typescript-eslint/space-before-function-paren": "off"
   }
 }
