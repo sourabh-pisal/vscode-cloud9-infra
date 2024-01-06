@@ -12,7 +12,7 @@ export class VscodeCloud9InfraStack extends Stack {
       maxAzs: 1,
       subnetConfiguration: [
         {
-          name: 'private-subnet',
+          name: 'public-subnet',
           subnetType: SubnetType.PUBLIC
         }
       ]
@@ -21,7 +21,7 @@ export class VscodeCloud9InfraStack extends Stack {
     new CfnEnvironmentEC2(this, 'Ec2Env', {
       imageId: 'amazonlinux-2023-x86_64',
       instanceType: 't3.xlarge',
-      automaticStopTimeMinutes: 5,
+      automaticStopTimeMinutes: 30,
       connectionType: 'CONNECT_SSM',
       description: 'Cloud9 instance for use with VS Code Remote SSH',
       name: 'Vs Code Remote SSH',
