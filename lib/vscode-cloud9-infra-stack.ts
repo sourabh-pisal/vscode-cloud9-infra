@@ -1,4 +1,4 @@
-import { Stack, type StackProps } from 'aws-cdk-lib'
+import { Fn, Stack, type StackProps } from 'aws-cdk-lib'
 import { CfnEnvironmentEC2 } from 'aws-cdk-lib/aws-cloud9'
 import { IpAddresses, SubnetType, Vpc } from 'aws-cdk-lib/aws-ec2'
 import { type Construct } from 'constructs'
@@ -25,7 +25,9 @@ export class VscodeCloud9InfraStack extends Stack {
       connectionType: 'CONNECT_SSM',
       description: 'Cloud9 instance for use with VS Code Remote SSH',
       name: 'Vs Code Remote SSH',
-      subnetId: vpc.publicSubnets[0].subnetId
+      subnetId: vpc.publicSubnets[0].subnetId,
+      // eslint-disable-next-line no-template-curly-in-string
+      ownerArn: Fn.sub('arn:aws:iam::${AWS::AccountId}:root')
     })
   }
 }
